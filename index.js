@@ -11,9 +11,9 @@ const Manager = require('./lib/Manager')
 // js file generating html
 const generateHTML = require('./src/generateHTML');
 // cards generated for roles
-const engineerCard = require('./src/generateHTML').engineerCard
-const internCard = require('./src/generateHTML').internCard
-const managerCard = require('./src/generateHTML').managerCard
+// const engineerCard = require('./src/generateHTML').engineerCard
+// const internCard = require('./src/generateHTML').internCard
+// const managerCard = require('./src/generateHTML').managerCard
 
 // team array
 const teamArray = [];
@@ -100,7 +100,49 @@ const internQuestions = [
     },
 ];
 
+// option to add more employees
+function initAdd() {
+    inquirer.prompt([{
+        type: 'confirm',
+        name: 'addTeam',
+        message: 'Add more team members?',
+        default: true,
+    }])
+        .then((answer) => {
+            if (answer.addTeam) {
+                init();
+            }
+        })
+}
+
 // function runs questions
+function init() {
+    inquirer.prompt(roleQuestions).then((roleAnswers) => {
+        if (roleAnswers.role === "Manager") {
+            console.log(roleAnswers.role)
+            inquirer.prompt(managerQuestions).then((managerAnswers) => {
+                const htmlManager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNumber);
+                employeeCards.push(managerCard(htmlManager));
+                initAdd()
+            });
+        } else if (roleAnswers.role === "Engineer") {
+            console.log(roleAnswers.role)
+            inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
+                const htmlEngineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.gitHub);
+                employeeCards.push(engineerCard(htmlEngineer));
+                initAdd()
+            });
+        } else if (roleAnswers.role === "Intern") {
+            console.log(roleAnswers.role)
+            inquirer.prompt(internQuestions).then((internAnswers) => {
+                const htmlIntern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school);
+                employeeCards.push(internCard(htmlIntern));
+                initAdd()
+            });
+        }
+    });
+}
+init();
 
 // function to generate HTML page file using file system 
 const writeFile = data => {
