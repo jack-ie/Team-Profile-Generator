@@ -21,33 +21,83 @@ const teamArray = [];
 // role questions
 const roleQuestions = [
     {
-        type: "list",
-        name: "role",
-        message: "Which employee would you like to add?",
-        choices: ["Manager", "Engineer", "Intern"],
+        type: 'list',
+        name: 'role',
+        message: 'Please select employee to add',
+        choices: ['Manager', 'Engineer', 'Intern'],
     }
 ];
 
 // manager questions
 const managerQuestions = [
     {
-        type: "input",
-        name: "name",
-        message: "Please enter managers name",
+        type: 'input',
+        name: 'name',
+        message: 'Please enter managers name',
     },
     {
-        type: "input",
-        name: "id",
-        message: "Please enter managers id",
+        type: 'input',
+        name: 'id',
+        message: 'Please enter managers id',
     },
     {
-        type: "input",
-        name: "email",
-        message: "Please enter managers email",
+        type: 'input',
+        name: 'email',
+        message: 'Please enter managers email',
     },
     {
-        type: "input",
-        name: "officeNumber",
-        message: "Please enter managers office phone number",
+        type: 'input',
+        name: 'officeNumber',
+        message: 'Please enter managers office phone number',
     },
 ];
+
+// engineer questions
+const engineerQuestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Please enter engineers name',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'Please enter engineers id',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please enter engineers email',
+    },
+    {
+        type: 'input',
+        name: 'gitHub',
+        message: 'Please enter engineers Github username',
+    },
+];
+
+// intern questions
+const internQuestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Please enter interns name',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'Please enter interns id',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please enter interns email',
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'Please enter interns school name',
+    },
+];
+
+// function runs questions
