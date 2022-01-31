@@ -1,8 +1,8 @@
-// Importing Employee constructor
+// import employee constructor
 const Employee = require('../lib/Employee');
 
 // Creates employee object 
-test('Employee Object', () => {
+test('Employee', () => {
     const employee = new Employee('Jackeline', '90', 'jackietest@testmail.com');
     // gets employee name
     it('getName = name', () => {

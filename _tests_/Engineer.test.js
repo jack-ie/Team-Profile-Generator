@@ -1,6 +1,7 @@
+// import engineer constructor
 const Engineer = require('../lib/Engineer');
 
-describe('engineer object', () => {
+test('Engineer', () => {
     const engineer = new Engineer('Jackeline', '90', 'jackietest@testmail.com', 'mygithub');
     // gets engineer name
     it('getName = name', () => {
