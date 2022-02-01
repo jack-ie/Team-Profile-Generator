@@ -1,58 +1,67 @@
 // manager card for html
-const genManager = function (manager) {
-    return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h3>${manager.name}</h3>
-                <h4>Manager</h4><i class="material-icons">content_paste</i>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${manager.id}</p>
-                <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
-                <p class="office">Office Number: ${manager.officeNumber}</p>
+const managerCard = (Manager) => {
+    const { name, id, email, number, role } = Manager
+    return `<div class = "column">
+        <div class = "card">
+            <div class = "cardContent">
+                <div class="cardHeader">
+                    <div class = "cardHeaderContent text-center bg-gradient bg-dark text-white">
+                        <h4 class = "cardName">${name}</h4>
+                        <p class = "cardRole">${role}</p>
+                    </div>
+                </div>
+                <div class="content text-center">
+                    <div class = "column"> ID: ${id} </div>
+                    <div class = "column"> Email: <a href="mailto:${email}">${email}</a></div>
+                    <div class = "column"> Office Number: ${number} </div>
+                </div>
             </div>
         </div>
-    </div>
-    `;
+    </div>`
 }
 
 // engineer card for html
-const genEngineer = function (engineer) {
-    return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h3>${engineer.name}</h3>
-                <h4>Engineer</h4><i class="material-icons">laptop_mac</i>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${engineer.id}</p>
-                <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+const engineerCard = (Engineer) => {
+    const { name, id, email, gitHub, role } = Engineer
+    return `<div class = "column">
+        <div class = "card">
+            <div class = "cardContent">
+                <div class = "cardHeader">
+                    <div class = "cardHeaderContent text-center bg-gradient bg-secondary text-white">
+                        <h4 class = "cardName">${name}</h4>
+                        <p class = "cardRole">${role}</p>
+                    </div>
+                </div>
+                <div class="content text-center">
+                    <div class = "column"> ID: ${id} </div>
+                    <div class = "column"> Email: <a href="mailto:${email}">${email}</a></div>
+                    <div class = "column"> GitHub Userame: <a href="https://github.com/${gitHub}" target="_blank">${gitHub}</a></div>
+                </div>
             </div>
         </div>
-    </div>
-    `
+    </div>`
 }
 
 // intern card for html
-const genIntern = function (intern) {
-    return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h3>${intern.name}</h3>
-                <h4>Intern</h4><i class="material-icons">assignment_ind</i>
+const internCard = (Intern) => {
+    const { name, id, email, school, role } = Intern
+    return `<div class = "column">
+        <div class = "card">
+            <div class = "cardContent">
+                <div class = "cardHeader">
+                    <div class = "cardHeaderContent text-center bg-gradient bg-secondary text-white">
+                        <h4 class = "cardName">${name}</h4>
+                        <p class = "cardRole">${role}</p>
+                    </div>
+                </div>
+                <div class="content text-center">
+                    <div class = "column"> ID: ${id} </div>
+                    <div class = "column"> Email: <a href="mailto:${email}">${email}</a></div>
+                    <div class = "column"> School: ${school}</div>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="id">ID: ${intern.id}</p>
-                <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
-                <p class="school">School: ${intern.school}</p>
-            </div>
-    </div>
-</div>
-    `
+        </div>
+    </div>`
 };
 
 // push array to page 
@@ -137,4 +146,6 @@ const genTeam = function (employeeCards) {
 }
 
 // export to index
-module.exports = generateHTML; 
+exports.managerCard = managerCard
+exports.engineerCard = engineerCard
+exports.internCard = internCard 

@@ -1,19 +1,20 @@
 // Importing modules
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 const fs = require('fs');
 
 // profiles
-const Employee = require('./lib/Employee')
+// const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
 
 // js file generating html
 const generateHTML = require('./src/generateHTML');
+
 // cards generated for roles
-// const engineerCard = require('./src/generateHTML').engineerCard
-// const internCard = require('./src/generateHTML').internCard
-// const managerCard = require('./src/generateHTML').managerCard
+const engineerCard = require('./src/generateHTML').engineerCard
+const internCard = require('./src/generateHTML').internCard
+const managerCard = require('./src/generateHTML').managerCard
 
 // team array
 const teamArray = [];
@@ -120,6 +121,7 @@ function init() {
     inquirer.prompt(roleQuestions).then((roleAnswers) => {
         if (roleAnswers.role === "Manager") {
             console.log(roleAnswers.role)
+
             inquirer.prompt(managerQuestions).then((managerAnswers) => {
                 const htmlManager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNumber);
                 employeeCards.push(managerCard(htmlManager));
@@ -127,6 +129,7 @@ function init() {
             });
         } else if (roleAnswers.role === "Engineer") {
             console.log(roleAnswers.role)
+
             inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
                 const htmlEngineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.gitHub);
                 employeeCards.push(engineerCard(htmlEngineer));
@@ -134,9 +137,10 @@ function init() {
             });
         } else if (roleAnswers.role === "Intern") {
             console.log(roleAnswers.role)
+            
             inquirer.prompt(internQuestions).then((internAnswers) => {
                 const htmlIntern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school);
-                employeeCards.push(internCard(htmlIntern));
+                employeeCard.push(internCard(htmlIntern));
                 initAdd()
             });
         }
@@ -159,14 +163,14 @@ const writeFile = data => {
 };
 
 // invoke app
-addManager()
-    .then(addEmployee)
-    .then(teamArray => {
-        return generateHTML(teamArray);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+// addManager()
+//     .then(addEmployee)
+//     .then(teamArray => {
+//         return generateHTML(teamArray);
+//     })
+//     .then(pageHTML => {
+//         return writeFile(pageHTML);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
